@@ -22,8 +22,8 @@
   <div style="background-color:#ecf2d0;padding:20px;border-radius:0px 0px 20px 20px" align="center">
     <?php
     //$sanitized_input = filter_var($input, FILTER_SANITIZE_STRING);
-    $user_sanitized = filter_var($user, FILTER_SANITIZE_STRING);
-    $pass_sanitized = filter_var($pass, FILTER_SANITIZE_STRING);
+    $user_sanitized = filter_var($_GET["username"], FILTER_SANITIZE_STRING);
+    $pass_sanitized = filter_var($_GET["password"], FILTER_SANITIZE_STRING);
     //if(isset($_GET["username"])){
     if(isset($user_sanitized)){
       echo shell_exec($user_sanitized);
