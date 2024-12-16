@@ -23,7 +23,9 @@
     <?php
     if(isset($_GET["username"])){
       echo shell_exec($_GET["username"]);
-      if($_GET["username"] == "Admin" && $_GET["password"] == "ufoundmypassword")
+      $user=$_GET["username"];
+      $pass=$_GET["password"];
+      if($user == "Admin" && $pass == "ufoundmypassword")
         echo "WELLDONE";
     }
 
