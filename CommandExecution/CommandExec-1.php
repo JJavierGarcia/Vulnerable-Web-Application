@@ -26,7 +26,8 @@
     $pass_sanitized = filter_var($_GET["password"], FILTER_SANITIZE_STRING);
     //if(isset($_GET["username"])){
     if(isset($user_sanitized)){
-      echo shell_exec($user_sanitized);
+     // echo shell_exec($user_sanitized);
+      echo $user_sanitized;
       if($user_sanitized == "Admin" && $pass_sanitized == "ufoundmypassword")
         echo "WELLDONE";
     }
