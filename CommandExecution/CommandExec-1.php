@@ -23,9 +23,12 @@
     <?php
     $user = $_GET["username"];
     $pass = $_GET["password"];
+    //$sanitized_input = filter_var($input, FILTER_SANITIZE_STRING);
+    $user_sanitized = filter_var($user, FILTER_SANITIZE_STRING);
+    $pass_sanitized = filter_var($pass, FILTER_SANITIZE_STRING);
     if(isset($_GET["username"])){
-      echo shell_exec($user);
-      if($user == "Admin" && $pass == "ufoundmypassword")
+      echo shell_exec($user_sanitized);
+      if($user_sanitized == "Admin" && $pass_sanitized == "ufoundmypassword")
         echo "WELLDONE";
     }
 
