@@ -18,11 +18,17 @@
       </div>
       
       <?php
+         $lista_inclusion = [
+          "file",
+          "archivo"
+         ];
         echo "</br></br>";
-        
+        $filename = $_GET['file'];
         if (isset( $_GET[ 'file' ]))        
         {
-          @include($_GET[ 'file' ]);
+        //  @include($_GET[ 'file' ]);
+           if (in_array($filename, $lista_inclusion)) {
+           include $filename;
           echo"<div align='center'><b><h5>".$_GET[ 'file' ]."</h5></b></div> ";       
         }
       ?>
