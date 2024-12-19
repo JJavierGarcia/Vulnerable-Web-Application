@@ -31,6 +31,7 @@
 	$db = "1ccb8097d0e9ce9f154608be60224c7c";
 
 	// Create connection
+	$password = getenv('secure_pass4');
 	$conn = new mysqli($servername, $username, $password,$db);
 
 	// Check connection
@@ -49,8 +50,10 @@
 			exit;
 		}
 
-		$query = "SELECT bookname,authorname FROM books WHERE number = $number"; 
+		$query = "SELECT bookname,authorname FROM books WHERE number = ?"; 
 		$result = mysqli_query($conn,$query);
+		mysqli_stmt_bind_param($result, "i", $number);
+		mysqli_stmt_execute($result);
 
 		if (!$result) { //Check result
 		    $message  = 'Invalid query: ' . mysql_error() . "\n";
