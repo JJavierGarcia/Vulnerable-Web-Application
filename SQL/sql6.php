@@ -23,6 +23,7 @@
 	$password = "";
 	$db = "1ccb8097d0e9ce9f154608be60224c7c";
 	// Create connection
+	$password = getenv('secure_pass6');
 	$conn = new mysqli($servername, $username, $password,$db);
 
 	// Check connection
@@ -33,8 +34,10 @@
 	$source = "";
 	if(isset($_GET["submit"])){
 		$number = $_GET['number'];
-		$query = "SELECT bookname,authorname FROM books WHERE number = '$number'";
+		$query = "SELECT bookname,authorname FROM books WHERE number = ?";
 		$result = mysqli_query($conn,$query);
+		mysqli_stmt_bind_param($result, "i", $number);
+		mysqli_stmt_execute($result);
 		$row = @mysqli_num_rows($result);
 		echo "<hr>";
 		if($row > 0){
