@@ -19,8 +19,14 @@
       </div>
       
       <?php     
-        echo "</br></br>";
 
+         $lista_inclusion = [
+          "file",
+          "archivo"
+         ];
+
+        echo "</br></br>";
+         
         if (isset( $_GET[ 'file' ])) 
         {
           $secure4 = $_GET[ 'file' ];
@@ -30,9 +36,9 @@
               $secure4=substr($secure4, 0,-4);
             }
             
-            if (isset($secure4)) 
+            if (isset($secure4) && in_array($secure4, $lista_inclusion)) 
             {        
-              include($secure4);              
+              include($secure4);     
             }
         }              
       ?>
