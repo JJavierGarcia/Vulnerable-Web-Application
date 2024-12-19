@@ -37,7 +37,7 @@
 	//echo "Connected successfully";
 	if(isset($_POST["submit"])){
 		$number = $_POST['number'];
-		$query = "SELECT bookname,authorname FROM books WHERE number = '$number'"; //Is this same with the level 2?
+		$query = "SELECT bookname,authorname FROM books WHERE number = ?"; //Is this same with the level 2?
 		$result = mysqli_query($conn,$query);
 		mysqli_stmt_bind_param($result, "i", $number);
 		mysqli_stmt_execute($result);
